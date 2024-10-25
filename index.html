@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'ennui</title>
+    <style>
+        /* Style de base */
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            font-family: 'Courier New', Courier, monospace;
+            overflow: hidden;
+        }
+
+        /* Carte en arrière-plan */
+        .background-map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Encadré du texte */
+        .text-box {
+            position: absolute;
+            top: 10%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60%;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 20px;
+            border-radius: 15px;
+            z-index: 2;
+            transition: all 0.3s ease;
+            height: 70%;
+            display: flex;
+            /* Utiliser flexbox pour centrer le contenu */
+            justify-content: center;
+            /* Centrer horizontalement */
+            align-items: center;
+            /* Centrer verticalement */
+        }
+
+        #titre_livre {
+            margin: 0;
+            /* Supprimer les marges par défaut */
+            font-size: 2.5em;
+            /* Taille du texte */
+            text-align: center;
+            /* Centrer le texte */
+            opacity: 1;
+            transition: opacity 2s ease;
+            /* Durée du fondu */
+        }
+
+        #int_texte {
+            display: none;
+            overflow: scroll;
+            height: 95%;
+            /* Cache le texte principal au départ */
+            opacity: 0;
+            transition: opacity 2s ease;
+            /* Durée du fondu */
+        }
+
+        #int_texte p{
+            line-height: 2em;
+        }
+
+
+        /* Barre de défilement personnalisée */
+        #int_texte::-webkit-scrollbar {
+            width: 0;
+            /* Cache la barre de défilement */
+            height: 0;
+            /* Cache la barre de défilement horizontale */
+        }
+
+        #int_texte:hover::-webkit-scrollbar {
+            width: 5px;
+            /* Largeur de la barre de défilement */
+        }
+
+        #int_texte::-webkit-scrollbar-thumb {
+            background: grey;
+            /* Couleur de la barre de défilement */
+            border-radius: 10px;
+            /* Rendre la barre de défilement ronde */
+        }
+
+        #int_texte::-webkit-scrollbar-thumb:hover {
+            background: darkgrey;
+            /* Couleur de la barre de défilement au survol */
+        }
+
+        /* Bouton slider */
+        .slider-button {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            z-index: 3;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* Masquer le texte */
+        .hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Carte interactive en arrière-plan -->
+    <div class="background-map">
+        <iframe src="carte_inter.html" width="100%" height="100%" style="border:none;"></iframe>
+    </div>
+
+    <!-- Encadré du texte par-dessus -->
+    <div class="text-box" id="textBox">
+        <h1 id="titre_livre">L'ennui</h1>
+        <div id="int_texte">
+            <p>Je n’aime pas la maison. Cet endroit envié par beaucoup et qui n’est malheureusement pas à la portée de
+                tous. Pourtant j’y ai passé beaucoup de temps. Du temps. C’est que nous avons de plus précieux, la
+                maison le prend et ne le rend plus. Quand j’habitais chez mes parents, j’étais plutôt du genre casanier.
+                Peu de sorties c’est-à-dire autant d’aventures non vécues. Alors, arrivé au lycée, moment de la vie où
+                on laisse exprimer sa part de liberté, j’ai rattrapé cette époque d’enfermement pour découvrir la vie
+                comme on aspire à l’aimer, remplies d’aventures et de sorties.
+                Rousseau disait « Il n'y a pas de plus grand plaisir que de retrouver le silence et la paix de son foyer
+                après l'agitation du monde ». Or, l’agitation du monde, de laquelle j’ai beaucoup été coupé, c’est ça
+                que je recherche aujourd’hui.
+                86400. C’est le nombre de secondes qui nous sont données dans une journée. Ce n’est pas stockable, ce
+                n’est pas réutilisable, on doit tout dépenser.
+                8000. C’est environ le nombre de pas que l’on fait en 1 jour. 8000 pas pour découvrir la beauté du
+                monde, découvrir ce que la vie nous réserve en 86400 secondes. Je vous propose de vous partager les
+                quelques 48 320 000 pas qui m’ont fait atterrir ici depuis ma naissance. Le voyage parle de nous, nous
+                définit, parce que nos déplacements sont intéressés, que nous voyageons pour une raison : vivre.
+            </p>
+            <h3>Chapitre 1 : L'enfance à la maison</h3>
+            <p>L’ennui est l’une de mes plus grandes peurs aujourd’hui. Rester enfermé chez soi à se demander ce qu’on
+                peut bien faire pour s’occuper. C’est quelque chose qui me terrifie par le confort dans lequel cela nous
+                place. Je pense que nous nous habituons vite à l’ennui et que nous y trouvons un certain réconfort,
+                c’est un moyen de procrastiner, de remettre les choses que nous n’osons pas faire au lendemain qui ne
+                cesse de s’étirer.
+                Je n’ai pas toujours craint l’ennui. Enfant l’ennui faisait parti de ma vie. Ma famille était plutôt
+                casanière, je me souviens encore de ces longs dimanches passés à regarder la télé toute une après-midi,
+                à faire un jeu de société à la nuit tombée, puis à préparer la soupe pour le dîner. Rien que de l’écrire
+                cela me donne des frissons. Nous étions tous ensemble c’était bien le seul réconfort que je trouvais à
+                ces journées.
+                Je suis né à Besançon en Franche-Comté. Après ma naissance, seulement 45 minutes de route (47,5
+                kilomètres) suffisaient pour arriver à destination de l’endroit où j’allais passer le plus clair de mon
+                temps, la maison, perdue au milieu de la campagne haut-saônoise.
+                Dans cet environnement, mes sorties n’étaient pas nombreuses. Cela se résumait davantage à des
+                allers-retours entre la maison familiale et mon école (17,2 kilomètres par trajet) dans laquelle j’ai
+                passé en plus de cela douze ans de ma vie. Cela représente 253 fois 12 fois ce même trajet, pour une
+                année constituée de 112 jours de vacances donc 253 jours d’école.
+                Nombre de kilomètres effectués entre l’école et la maison jusqu’à la fin du collège : 52 219,2
+                kilomètres.
+                Je me souviens avoir été heureux de quitter ces murs que je connaissais depuis trop longtemps.
+                Durant toute mon enfance, J’ai quand même eu la chance de pratiquer un sport. J’ai donc également été
+                bercé par les voyages entre la maison et le gymnase où je jouais au handball au moins 2 fois par semaine
+                (11,2 kilomètres par trajet). J’estime jouer au handball depuis mes 8 ans ce qui représenterait 444
+                trajets au gymnase jusqu’à mes 14 ans.
+                Nombre de kilomètres effectués entre le gymnase et la maison jusqu’à la fin du collège : 4972,8
+                kilomètres.
+                Nous n’avons pas non plus déménagé entre temps, ce qui aurait permis un peu d’évasion. (0 kilomètres).
+                Mamie n’habitait pas très loin (50,9 kilomètres), nous y allions à chaque vacances. J’ai appris beaucoup
+                de choses là-bas : comment traire les vaches, comment leur donner à manger, comment conduire un
+                tracteur… Mon papi nous fabriquait des fusils en bois. Mes frères et moi, on tirait à la carabine et on
+                faisait péter des pétards en plein milieu des champs, on montait sur les bottes de paille espérant
+                effleurer les nuages, on réparait la vieille mobylette de Nicolas et on fonçait à 50 km/h sur le chemin
+                à côté de la maison. Je me rappelle les matins où je me réveillais à l’aube, mamie avait préparé le
+                petit déjeuner. Je n’ai jamais compris pourquoi elle se levait si tôt, elle qui était à la retraite,
+                elle qui n’avait plus école. Je me réveillais à l’aube dans le seul but de pouvoir monter dans la
+                moissonneuse batteuse avec Marcel et moissonner les champs de colza avec lui. Tous ces efforts pour
+                finalement m’endormir à ses côtés une fois à bord.
+                Ce sont de bons souvenirs que je n’aurais pu vivre qu’à cette période où je découvrais encore une grande
+                partie de la vie.
+                Je parle beaucoup de la maison mais j’ai quand même voyagé étant enfant. Mes parents mettaient un point
+                d’honneur à ce que l’on parte tous en vacances chaque année. Nous restions en France et allions dans le
+                sud ou à la montagne. Je suis parti 17 ans en vacances avec ma famille au moins une fois par an.
+                J’estime la distance par trajet à 1250 kilomètres. Estimation du nombre de kilomètres pour partir en
+                vacances jusqu’à la fin du lycée : 21 250 kilomètres.
+
+                J’ai également fait de nombreux séjours en Allemagne d’un mois ou plus. Mon professeur et mes parents me
+                trouvant particulièrement bon dans cette discipline, ils m’ont largement encouragé à partir découvrir ce
+                pays avec une famille qui m’accueillait là-bas. J’ai donc été en échange à Stuttgart (367 kilomètres)
+                puis à Dortmund (575 kilomètres) et en Bavière (543 kilomètres) également.
+                Je détestais ces échanges. Vous allez commencer à vous dire que je suis difficile, je n’aime pas rester
+                à la maison, je n’aime pas sortir voyager. Le problème avec ces échanges c’était l’ennui. On s’ennuyait
+                tout en se mettant la pression pour que l’ennui disparaisse. Je devais sans cesse rester avec mon
+                correspondant avec qui je n’avais déjà pas grande affinité, mais en plus il fallait se plier à ses
+                propositions d’activités pour rester poli, ne pas oublier de sourire et de faire semblant d’être content
+                d’être là.
+                Estimation du nombre de kilomètres parcourus lors de mes échanges en Allemagne : 2235 kilomètres.
+                J’étais tellement bon en allemand que l’on m’a proposé à la fin du collège d’intégrer un cursus lycéen
+                avec 10 heures d’allemand par semaine et qui me permettait d’obtenir mon Abitur, l’équivalent du
+                baccalauréat en Allemagne en même temps que mon diplôme français. Sans beaucoup de conviction
+                personnelle, je suis donc parti vers Belfort (80 kilomètres) au lycée Condorcet pour commencer une
+                nouvelle vie.
+            </p>
+            <h3>Chapitre 2 : Renaissance</h3>
+            <p>Le début du lycée a marqué, à l’image de ce nouveau chapitre, une nouvelle période dans ma vie. J’étais
+                beaucoup plus indépendant notamment grâce au fait que j’ai passé mes 3 ans de lycée à l’internat.
+                J’ai souvent qualifié cette période comme la meilleure de ma vie surtout grâce à la liberté que j’avais
+                acquise en changeant d’établissement. J’ai tout renouvelé, mes amis, ma maison, mes activités, je suis
+                reparti de 0 : une véritable renaissance.
+                C’est durant cette période que je me suis fait mes meilleurs amis, que j’ai rencontré des gens sur qui
+                je peux encore compter aujourd’hui. C’est aussi à cette période que j’ai en partie regagné la confiance
+                que la machine intrépide du collège ôte à tous ces jeunes. J’ai découvert ce qu’est pour moi la vraie
+                vie, comment en profiter, comment organiser des événements, comment rassembler les gens, comment
+                travailler. Tous ces piliers qui construisent pour moi une vie heureuse et pleine de rebondissement.
+                J’ai beaucoup aimé l’internat. J’y ai connu des personnes qui sont aujourd’hui comme mes frères, avec
+                qui j’ai passé physiquement les trois quarts de mon temps pendant trois ans. J’ai également connu Zoé au
+                lycée qui est devenue une personne très importante pour moi.
+                Mes déplacements ont bien sûr été affectés dans ce nouveau monde, je rentrais tous les week-ends à la
+                maison (80kilomètres) et, même si la plupart de nos déplacements se faisaient au lycée, nous arpentions
+                souvent les rues de Belfort à la recherche d’un remède contre l’ennui.
+                Zoé a été l’une des personnes avec laquelle j’ai le plus voyagé. J’ai pris l’avion pour la première fois
+                avec elle pour aller à Budapest (1150 kilomètres), nous avons visiter ses deux maisons (56 kilomètres),
+                nous sommes partis à l’aventure, nous avons fait des festivals aux alentours de Belfort (30 kilomètres),
+                nous sommes allés à des concerts. Je ne connaissais pas ces aspects de la vie, j’ai découvert beaucoup
+                de choses avec Zoé, trop de choses, ce qui a causé notre perte.
+                Nos deux bacs en poche, nous avons décidé de faire un grand voyage de groupe à Berlin (895 kilomètres).
+                C’était la première fois que nous organisions un voyage avec autant de personnes et aussi loin. Cette
+                aventure m’a donné envie d’en faire plus pour les autres : organiser des sorties, des rencontres, des
+                événements, tout ce qui fait de la vie une expérience extraordinaire.
+                Le lycée ce n’était pas que du bonheur, il y a eu une période très compliquée pour beaucoup dont moi. Je
+                veux bien sûr parler du confinement qui me forçait à rester à la maison durant des mois. C’était comme
+                un retour en enfance, un retour à l’ennui presque permanant. Nous n’avions plus le droit de sortir, plus
+                le droit de nous voir les uns, les autres, pour moi c’était la vie qui s’arrêtait en partie. Les seules
+                distances que je parcourais à cette période étaient l’aller-retour entre la maison et le bout de chemin
+                sur lequel je sortais courir pour me libérer de cet ennui.
+                J’avais l’impression, à cette période, que j’étais le seul gêné par cette sédentarité. Je me rappelle
+                l’annonce officielle du confinement. Nous l’avions tous vu en même temps projeté sur l’écran de
+                l’internat. Les gens autour de moi se réjouissaient de ne plus devoir aller au lycée, mais pour moi
+                c’était une catastrophe. N’allez pas croire que je n’éprouve aucune affection pour ma famille avec
+                laquelle j’ai passé tout le confinement. J’aime ma famille, ce qui m’a déplu c’est de devoir rester
+                enfermé. C’est comme si j’étais en train de louper tout ce que la vie a à nous offrir, comme si je
+                ratais le train. Il faut dire qu’avec le contexte de ces mois-là, la vie n’offrait plus grand-chose. Les
+                rues étaient désertes, les magasins fermés, les transports ralentis, il n’y avait pas de quoi envier le
+                dehors.
+                Mes déplacements se limitaient à des allers-retours entre ma chambre ou je suivais cours à distance, la
+                cuisine (15 pas), la salle de bain (10 pas et 21 marches) et les quelques kilomètres dans le village 2
+                fois par semaine lorsque j’allais courir.
+                Nombre de kilomètres parcourus durant ces 103 jours de confinement :
+                154,515 kilomètres et 3244 marches.
+            </p>
+            <h3>Chapitre 3 : Créer le bonheur</h3>
+            <p>Je sors du lycée avec 2 bacs dans la poche, des souvenirs magnifiques et 3 ans de bonheur. Je me dirige à
+                Strasbourg ou j’ai en tête de passer les cinq prochaines années de ma vie.
+                L’arrivée à Strasbourg n’est pas facile, je ne connais personne, je n’ai pas d’amis et j’ai du mal à
+                m’en faire au début.
+                Quand on y pense, c’était la première fois que je vivais tout seul, j’avais mon propre appartement dans
+                la banlieue strasbourgeoise. Je me retrouvais seul le soir pour la première fois de ma vie. J’ai très
+                mal vécu cette période, à tel point que j’ai décidé d’aller voir une psychologue (300 mètres de
+                l’appartement). Moi qui avais encouragé Zoé à aller en voir un, j’ai eu du mal à accepter le fait que
+                j’en avais besoin. J’ai compris que c’était un vrai métier qu’on essaie tous de copier, moi le premier.
+                Mais très souvent ça ne marche pas. Finalement j’ai fait peu de séances (surtout parce que je n’avais
+                pas le budget pour continuer) cependant ça m’a fait beaucoup de bien. Durant cette période je n’ai, du
+                coup, pas beaucoup voyagé. Je faisais surtout des allers-retours entre l’appartement et l’école (500 m)
+                et quelques fois j’allais jusqu’à Strasbourg (6 kilomètres) pour pédaler sur les pavés de la place
+                Kleber ou de la Grand’rue.
+                Zoé, elle, était partie à Nancy. Je faisais l’aller-retour toutes les deux semaines pour pouvoir la voir
+                encore un peu mais, quoi qu’on dise, loin des yeux voudra toujours dire loin du cœur pour moi.
+                J’étais prêt à beaucoup pour me faire des amis à mon arrivée à Strasbourg, notamment à m’embarquer dans
+                des projets qui me paraissaient impossibles. Je me rappelle ce moment un peu hors du temps où j’ai
+                proposé à deux connaissances de m’accompagner à l’Europ’raid, c’est un road trip dont le but est de
+                traverser 20 pays en 22 jours avec 70 kilogrammes de matériel scolaire à bord d’une voiture dernier cri,
+                j’ai nommé la Peugeot 205.
+                Une aubaine me direz-vous, cependant nous n’avions pas le temps de préparer ce projet démesuré. La
+                proposition faite en novembre, nous devions être fins prêts pour fin juillet. Trouver une voiture,
+                trouver 70 kilogrammes de matériel scolaire, trouver 10 000 euros pour s’inscrire, trouver des sponsors,
+                tout cela en 8 mois. C’est un pari risqué mais la victoire devrait être d’autant plus belle.
+                L’entrée dans l’étude supérieure m’a fait découvrir le milieu associatif, notamment le sport
+                universitaire. J’ai repris l’équipe de handball qu’il y avait à l’école, ce club nous a fait vivre des
+                expériences inoubliables, nous avons fait des matchs avec toutes les écoles de Strasbourg, nous sommes
+                partis jusqu’à Mulhouse (110 kilomètres) pour jouer. Nous avons fait des matchs dans le sable à Sélestat
+                (45 kilomètres). Ces moments ont créé les meilleurs souvenir de mes deux années de prépa.
+                J’ai également découvert là-bas, avec le temps, des personnes très importantes pour moi aujourd’hui.
+                Nous avons tissé des liens forts, nous sommes partis en vacances à Lloret de Mar (1059 kilomètres)
+                ensemble, avons fait les 400 coups, sommes partis à Vienne (772 kilomètres) sur un coup de tête un beau
+                matin, sommes partis en Italie (610 kilomètres) à 4 heures du matin après une soirée. Je n’étais pas
+                beaucoup à l’appartement, c’était pour moi juste un dortoir ou un lieu de fête.
+                J’avais compris que l’ennui n’arrive que si on le veut bien. C’est nous qui créons le bonheur. D’abord
+                son bonheur personnel mais parfois aussi le bonheur des autres. Sortir, organiser des choses, inviter
+                des gens, parler, se mettre en difficulté pour un projet, essayer encore et encore malgré l’échec, ma
+                vie en prépa était rythmée par ce mode de vie. C’est assez paradoxal quand on pense que c’est ce qui me
+                donne le plus de bonheur mais c’est aussi ce qui est le plus dur à faire, se motiver pour ne pas plonger
+                dans des après-midis entières sans aucune activité à flâner sur un canapé. C’est beaucoup simple de
+                passer des après-midis comme ça, mais ce n’est pas ça la vie pour moi.
+                29 juillet 2023, 15h : départ de l’Europ raid.
+                A bord de notre 205 Junior baptisée Juju pour l’occasion, nous avons travaillé d’arrache-pied pour
+                passer cette arche de départ. Je n’ai jamais vécu autant que pendant ces 22 jours d’aventure. 22 jours à
+                la découverte du monde avec des amis, qui pourrait rêver mieux ? Moi qui n’étais pas sorti de la France
+                avant mes 16 ans, je m’apprêtais à faire plus de 120 étapes à travers 20 pays d’Europe. France, Suisse,
+                Italie, Autriche, Slovénie, Croatie, Bosnie-Herzégovine, Monténégro, Albanie, Grèce, Macédoine du nord,
+                Bulgarie, Roumanie, Hongrie, Slovaquie, Pologne, Tchéquie, Allemagne, Pays-Bas, Belgique. Total des
+                kilomètres parcourus pendant l’Europ’raid :
+                C’est la meilleure expérience de ma vie et de très loin. Jusqu’à la dernière minute et jusqu’à ce que
+                mon pied touche la pédale d’accélérateur pour passer la ligne de départ, je n’ai pas cru pouvoir partir.
+                J’ai eu tort de ne pas avoir eu confiance, nous sommes partis et nous sommes revenus avec des souvenirs
+                inoubliables pour n’importe quel être humain. Jules Renard disait « Il faut voyager pour agrandir la
+                vie. » Ce voyage au-delà d’agrandir ma vie en a été une véritable leçon. J’ai gagné en maturité, en
+                direction de projet, j’ai vu la richesse, j’ai vu la pauvreté, j’ai vu l’amitié, j’ai vu l’entraide. Ma
+                vie en a été bouleversé et je ne m’attendais pas à de telles conséquences.
+                L’ennui, donc pour moi l’absence du bonheur, est un combat quasi permanent car nous nous complaisons
+                dans cet ennui, c’est une situation confortable pour nous. J’ai aujourd’hui compris que c’était à moi de
+                battre l’ennui, de sortir pour découvrir, sortir voir, voir le monde et tout ce qu’il a à offrir. Nous
+                n’avons rien trouver de plus précieux que la vie, les humains se battent dur pour qu’elle dure le plus
+                longtemps possible, je me suis souvent demandé pourquoi mais aujourd’hui j’ai une partie de la réponse :
+                parce qu’avec les bons éléments, les bonnes personnes la vie est un miracle, une chance que l’on nous
+                donne. Ce temps est si précieux car il est rare. C’est parce qu’il y a une fin que la vie est précieuse,
+                parce qu’on ne sait pas quand mais on sait qu’un jour elle sera finie et je ne veux pas avoir passé ces
+                moments à la maison, je n’aime pas la maison.
+            </p>
+
+            <p>Le voyage parle de nous, nous définit, parce que nos déplacements sont intéressés, que nous voyageons
+                pour une raison : vivre.</p>
+        </div>
+    </div>
+
+    <!-- Bouton pour masquer/afficher le texte -->
+    <button class="slider-button" onclick="toggleText()">Afficher/Masquer le texte</button>
+
+    <script>
+        // Fonction pour basculer l'affichage du texte
+        function toggleText() {
+            var textBox = document.getElementById('textBox');
+            textBox.classList.toggle('hidden');
+        }
+
+        window.onload = function () {
+    var text_box = document.getElementById('textBox');
+
+    // Affiche le titre et cache le texte principal au chargement
+    document.getElementById('int_texte').style.display = 'none';
+    
+    setTimeout(() => {
+        // Démarre le fondu du titre
+        var titre = document.getElementById('titre_livre');
+        titre.style.opacity = 0; // Démarre la transition d'opacité
+
+        // Attendre que l'animation de fondu soit terminée avant de cacher le titre
+        setTimeout(() => {
+            titre.style.display = 'none'; // Cache le titre après le fondu
+            var textePrincipal = document.getElementById('int_texte');
+            textePrincipal.style.display = 'block'; // Affiche le texte principal
+            
+            // Démarre le fondu du texte principal
+            setTimeout(() => {
+                textePrincipal.style.opacity = 1; // Rend le texte principal visible avec le fondu
+            }, 10); // Petit délai pour s'assurer que le style d'affichage est appliqué
+        }, 1000); // Correspond à la durée du fondu du titre
+    }, 4000); // Afficher le titre pendant 5 secondes
+};
+
+
+    </script>
+
+</body>
+
+</html>
